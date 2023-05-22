@@ -52,8 +52,6 @@ const App = () => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
 
-  const visibleContacts = getVisibleContacts();
-
   return (
     <>
       <h1>Phonebook</h1>
@@ -61,7 +59,10 @@ const App = () => {
 
       <h2>Contacts</h2>
       <Filter value={filter} onChange={handleFilterChange} />
-      <ContactList contacts={visibleContacts} onDeleteContact={deleteContact} />
+      <ContactList
+        contacts={getVisibleContacts()}
+        onDeleteContact={deleteContact}
+      />
     </>
   );
 };
